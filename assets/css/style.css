@@ -1,0 +1,8 @@
+.hint{
+    position: absolute;
+    color: rgba(206, 89, 89, 0.87);
+}
+
+.hint-hide{
+    display: none;
+}
