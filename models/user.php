@@ -24,8 +24,7 @@ class User extends \Core\Model{
             INSERT INTO users (email, password) VALUES ($this->email, $this->password)
         ";
         $query = $pdo->prepare($sql);
-        $affected = $query->execute();
-        echo var_dump($affected);
+        $query->execute();
     }
 
     public function validate(): bool
