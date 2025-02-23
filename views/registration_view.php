@@ -49,7 +49,7 @@
                 success: (data) => {
                     $container.html(`Успешная регистрация пользователя ${email}`);
                 },
-                error: (, status, error) => {
+                error: (, , error) => {
                     $errorArea.val(error);
                 }
             });
