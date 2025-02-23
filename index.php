@@ -1,7 +1,7 @@
 <?php
-require_once('utils/autoload.php');
-
-use Db;
+ phpinfo();
+require_once('core/autoload.php');
+include 'db/db.php';
 
 Db::init();
 
@@ -22,6 +22,15 @@ if (!file_exists($filePath)){
 }
 
 include $filePath;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller = new $route();
+    $controller->action_post($_REQUEST);
+}
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $controller = new $route();
+    $controller->action_index();
+}
 } catch (Throwable $ex) {
     include dirname(__FILE__).'/controllers/404.php';
 }

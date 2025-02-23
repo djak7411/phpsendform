@@ -1,11 +1,11 @@
 <?php
-use PDO;
 class Db {
     protected static $pdo;
 
     private function __construct() {
         $env = parse_ini_file('.env');
-        $dsn = "pgsql:host=".$env['HOST'].";port=".$env['PORT'].";dbname=".$env['DB_NAME'];
+        $dsn = 'pgsql:host='.$env['HOST'].';port='.$env['PORT'].';dbname='.$env['DB_NAME'].';charset=UTF8';
+        
         $this->pdo = new PDO($dsn,$env['USER'],$env['PASSWORD']);
     }
     public static function getPdo():PDO {

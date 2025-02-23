@@ -12,4 +12,8 @@ class Controller {
 	function action_index()
 	{
 	}
+
+	function action_post($request): void
+	{
+	}
 }

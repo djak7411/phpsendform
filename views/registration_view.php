@@ -1,6 +1,6 @@
 <div class="form-container">
     <span class="error"></span>
-    <form id="auth_form">
+    <form method="POST" id="auth_form">
         <label for="email">Email*</label>
         <label for="password">Пароль*</label>
         <label for="confirm_password">Подтвердите пароль*</label>

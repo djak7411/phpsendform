@@ -1,5 +1,5 @@
 <?php
-use Db;
+
 class User extends Model{
     public $id;
     private $email;
