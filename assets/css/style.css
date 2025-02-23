@@ -1,8 +1,21 @@
 .hint{
     position: absolute;
     color: rgba(206, 89, 89, 0.87);
+    bottom: 100%;
 }
 
 .hint-hide{
     display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 33.3%;
+    margin: auto;
+    padding: 8px;
+    position: relative;
+}
+input {
+    margin: 4px;
 }

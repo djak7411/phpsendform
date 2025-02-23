@@ -1,4 +1,5 @@
 <?php
+namespace Core;
 class Controller {
 	
 	public $model;
@@ -13,7 +14,7 @@ class Controller {
 	{
 	}
 
-	function action_post($request): void
+	function action_post($data)
 	{
 	}
 }

@@ -1,10 +1,10 @@
 <?php 
+namespace Core;
 class View
 {
 	
-	function generate($content_view, $data = null)
+	function generate($content, $data = null)
 	{
-		
 		include 'views/layout.php';
 	}
 }

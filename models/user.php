@@ -1,6 +1,9 @@
 <?php
+namespace Models;
 
-class User extends Model{
+use PDOStatement;
+
+class User extends \Core\Model{
     public $id;
     private $email;
     private $password;
@@ -16,9 +19,9 @@ class User extends Model{
 
     public function save():void 
     {
-        $pdo = Db::getPdo();
+        $pdo = \Db\Db::getPdo();
         $sql = "
-            INSERT INTO user (email, password) VALUES ($this->email, $this->password)
+            INSERT INTO users (email, password) VALUES ($this->email, $this->password)
         ";
         $query = $pdo->prepare($sql);
         $affected = $query->execute();
@@ -34,13 +37,14 @@ class User extends Model{
         }
     }
 
-    public static function get_all(): array
-    {
-        $pdo = Db::getPdo();
+    public static function get_all()
+    {   
+        $pdo = \Db\Db::getPdo();
         $sql = "
-            SELECT * FROM user;
+            SELECT * FROM users;
         ";
-        $query = $pdo->query($sql);
-        return $query->fetch();
+        $result = $pdo->prepare($sql);
+        $result->execute();
+        return $result;
     }
 }

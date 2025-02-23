@@ -1,10 +1,9 @@
 <?php
- phpinfo();
-require_once('core/autoload.php');
-include 'db/db.php';
+spl_autoload_register();
 
-Db::init();
-
+db\Db::init();
+header("Cache-Control: no-cache, must-revalidate"); 
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
 try {
     $route = trim($_REQUEST['route']??'index');
 if (substr($route,'-1') == '/'){
@@ -24,11 +23,11 @@ if (!file_exists($filePath)){
 include $filePath;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new $route();
-    $controller->action_post($_REQUEST);
+    $controller = new Controllers\Registration();
+    $controller->action_post($_POST);
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $controller = new $route();
+    $controller = new Controllers\Registration();
     $controller->action_index();
 }
 } catch (Throwable $ex) {

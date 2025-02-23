@@ -47,7 +47,7 @@
                     confirm
                 },
                 success: (data) => {
-                    $container.html(`Успешная регистрация пользователя ${email}`);
+                    //$container.html(`Успешная регистрация пользователя ${email}`);
                 },
                 error: (, , error) => {
                     $errorArea.val(error);
