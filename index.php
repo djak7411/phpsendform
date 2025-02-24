@@ -2,6 +2,7 @@
 require_once('bootstrap.php');
 header("Cache-Control: no-cache, must-revalidate"); 
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
+
 try {
     $route = trim($_REQUEST['route']??'index');
 if (substr($route,'-1') == '/'){
@@ -28,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new Controllers\Registration();
     $controller->action_index();
 }
+
+
+
 } catch (Throwable $ex) {
+    echo 404;
     include dirname(__FILE__).'/controllers/404.php';
 }

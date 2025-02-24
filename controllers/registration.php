@@ -8,7 +8,7 @@
         }
         function action_index(): void 
         {	
-		    $this->view->generate('auth_view.php');
+		    $this->view->generate('layout.php');
 	    }
 
         function action_post($data):void
@@ -17,10 +17,13 @@
                 $email = $data['email'];
                 $password = $data['pass'];
                 $confirm = $data['confirm'];
+                $existUsers = [];
                 if($password === $confirm){
-                    while($res = User::get_all()->fetch(\PDO::FETCH_BOTH)){
-                        if($email === $res['email']){
-                            header("HTTP/1.1 502");
+                    $existUsers = User::get_all();
+                    foreach($existUsers as $user){
+                        if($email === $user['email']){
+                            header("HTTP/1.1 409");
+                            break;
                         }
                     }
                     $new_user = new User($email, $password, $confirm);

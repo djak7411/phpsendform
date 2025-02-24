@@ -39,11 +39,14 @@ class User extends \Core\Model{
     public static function get_all()
     {   
         $pdo = \Db\Db::getPdo();
+        $users = [];
         $sql = "
             SELECT * FROM users;
         ";
-        $result = $pdo->prepare($sql);
-        $result->execute();
-        return $result;
+        foreach($pdo->query($sql) as $row){
+            array_push($users, $row);
+        }
+        
+        return $users;
     }
 }

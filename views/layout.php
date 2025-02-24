@@ -69,7 +69,7 @@
                 },
                 error: (data, status, error) => {
                     $hint.removeClass('hint-hide');
-                    if(status === 502){
+                    if(error === 'Conflict'){
                         $hint.html('Пользователь уже существует');
                     }
                 }
